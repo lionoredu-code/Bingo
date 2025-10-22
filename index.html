@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Bingo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>¡Bingo Interactivo!</h1>
+
+    <div class="juego-container">
+        <div class="tombola">
+            <button id="sacar-bolilla">Sacar Bolilla</button>
+            <div id="bolilla-actual">
+                <span id="letra-bolilla"></span>
+                <span id="numero-bolilla"></span>
+            </div>
+            <h3>Bolillas Sacadas:</h3>
+            <div id="historial-bolillas"></div>
+        </div>
+
+        <div class="cartilla-container">
+            <h2>Mi Cartilla</h2>
+            <table id="cartilla-bingo">
+                <thead>
+                    <tr>
+                        <th>B</th>
+                        <th>I</th>
+                        <th>N</th>
+                        <th>G</th>
+                        <th>O</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+            <button id="revisar-bingo">¡BINGO!</button>
+        </div>
+    </div>
+
+    <div id="animacion-bingo" class="oculto">
+        <div class="texto-bingo">BINGO!</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

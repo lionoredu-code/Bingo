@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.juego-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* --- Tómbola y Bolillas --- */
+.tombola {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#sacar-bolilla {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#sacar-bolilla:disabled {
+    background-color: #aaa;
+}
+
+#bolilla-actual {
+    width: 120px;
+    height: 120px;
+    background-color: #f8dd4e; /* Color bolilla */
+    border: 5px solid #d4a11b;
+    border-radius: 50%; /* Esto crea el círculo */
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+#letra-bolilla {
+    font-size: 2.5em;
+    color: #b33939;
+}
+
+#numero-bolilla {
+    font-size: 1.5em;
+    color: #333;
+}
+
+#historial-bolillas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 100px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+/* --- Cartilla de Bingo --- */
+#cartilla-bingo {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#cartilla-bingo th, #cartilla-bingo td {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #333;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#cartilla-bingo th {
+    background-color:#28a745;
+    color: white;
+}
+
+#cartilla-bingo td {
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#cartilla-bingo td:hover {
+    background-color: #fdfdcb;
+}
+
+/* Clase que se añade con JS al marcar */
+#cartilla-bingo td.marcado {
+    background-color: #5bc0de;
+    color: white;
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+}
+
+#revisar-bingo {
+    font-size: 1.3em;
+    padding: 10px 30px;
+    width: 100%;
+    background-color: #0275d8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* --- Animación de Victoria --- */
+#animacion-bingo {
+    position: fixed; /* Se superpone a todo */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#animacion-bingo.oculto {
+    display: none; /* Oculta por defecto */
+}
+
+.texto-bingo {
+    font-size: 15vw; /* Tamaño grande */
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de, 0 0 70px #ff00de;
+    /* Animación */
+    animation: parpadeo 1.5s infinite alternate;
+}
+
+/* Define la animación */
+@keyframes parpadeo {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+/* --- AÑADE ESTO AL FINAL DE TU style.css --- */
+
+/* 1. Animación para girar la bolilla */
+@keyframes girarBolilla {
+    from {
+        transform: rotatex(0deg); /* Gira sobre el eje Y */
+    }
+    to {
+        transform: rotatex(360deg);
+    }
+}
+
+/* 2. Clase que se añade con JS para activar la animación */
+#bolilla-actual.girando {
+    animation: girarBolilla 0.5s ease-out;
+}
+
+/* 3. Estilo para la celda "BINGO" (espacio gratis) */
+#cartilla-bingo td.bingo-gratis {
+    font-size: 1.1em; /* Fuente más pequeña para que "BINGO" quepa */
+    background-color: #fcf8e3; /* Color de fondo especial */
+    color: #8a6d3b;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+/* 4. Estilo de celda "BINGO" cuando está marcada */
+#cartilla-bingo td.bingo-gratis.marcado {
+    background-color: #5bc0de; /* Mismo color de marcado */
+    color: white;
+}
